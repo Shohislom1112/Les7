@@ -15,7 +15,7 @@ const ContactList = ({ contacts, deleteContact, onEdit }) => {
             <p>{contact.phone}</p>
           </div>
           <div className="d-flex gap-2">
-            <button className="btn btn-sm">❤️</button>
+            <button className="btn btn-sm">🤍</button>
             <button
               onClick={() => onEdit(contact)}
               className="btn btn-sm btn-warning"

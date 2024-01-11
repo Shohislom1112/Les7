@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactForm = ({ addContact }) => {
   const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    category: 'Other',
+    firstName: "",
+    lastName: "",
+    phone: "",
+    category: "Other",
     favorite: false,
   });
 
@@ -13,16 +13,16 @@ const ContactForm = ({ addContact }) => {
     e.preventDefault();
     addContact(data);
     setData({
-      firstName: '',
-      lastName: '',
-      phone: '',
-      category: 'Other',
+      firstName: "",
+      lastName: "",
+      phone: "",
+      category: "Other",
       favorite: false,
     });
   };
 
   return (
-    <div className="w-25 bg-info-subtle p-3">
+    <div className="w-25 p-3">
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label className="form-label" htmlFor="firstName">
