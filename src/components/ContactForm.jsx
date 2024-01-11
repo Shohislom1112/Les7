@@ -75,8 +75,8 @@ const ContactForm = ({ addContact }) => {
             onChange={(e) => setData({ ...data, category: e.target.value })}
           >
             <option value="Other">Other</option>
-            <option value="Relatives">Relatives</option>
-            <option value="Family">Family</option>
+            <option value="N3">N32</option>
+            <option value="M33">M33</option>
             <option value="Friends">Friends</option>
           </select>
         </div>

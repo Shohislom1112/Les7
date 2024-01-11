@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import ContactList from './ContactList';
-import ContactForm from './ContactForm';
-import EditContact from './EditContact';
+import React, { useState } from "react";
+import ContactList from "./ContactList";
+import ContactForm from "./ContactForm";
+import EditContact from "./EditContact";
 
 const Contacts = () => {
-  const contactsLocal = JSON.parse(localStorage.getItem('contacts')) || [];
+  const contactsLocal = JSON.parse(localStorage.getItem("contacts")) || [];
   const [showFavorite, setShowFavorite] = useState(false);
   const [contacts, setContacts] = useState(contactsLocal);
-  const [search, setSearch] = useState('');
-  const [sort, setSort] = useState('A-Z');
-  const [filter, setFilter] = useState('All');
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("A-Z");
+  const [filter, setFilter] = useState("All");
   const [contactsToSend, setContactsToSend] = useState(contacts);
   const [contactEditing, setContactEditing] = useState(null);
   const [show, setShow] = useState(false);
@@ -20,14 +20,14 @@ const Contacts = () => {
       ...contacts,
     ];
     setContacts(newContacts);
-    localStorage.setItem('contacts', JSON.stringify(newContacts));
+    localStorage.setItem("contacts", JSON.stringify(newContacts));
   };
 
   const deleteContact = (id) => {
-    if (confirm('Are you sure you want to delete this contact?')) {
+    if (confirm("Are you sure you want to delete this contact?")) {
       const newContacts = contacts.filter((cn) => cn.id !== id);
       setContacts(newContacts);
-      localStorage.setItem('contacts', JSON.stringify(newContacts));
+      localStorage.setItem("contacts", JSON.stringify(newContacts));
     }
   };
 
@@ -36,7 +36,7 @@ const Contacts = () => {
       cn.id === contact.id ? contact : cn
     );
     setContacts(newContacts);
-    localStorage.setItem('contacts', JSON.stringify(newContacts));
+    localStorage.setItem("contacts", JSON.stringify(newContacts));
     setContactsToSend(newContacts);
     setShow(false);
   };
@@ -64,7 +64,7 @@ const Contacts = () => {
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
     const newContacts =
-      e.target.value === 'All'
+      e.target.value === "All"
         ? contacts
         : contacts.filter((cn) => cn.category === e.target.value);
     setContactsToSend(newContacts);
@@ -73,7 +73,7 @@ const Contacts = () => {
   const handleSortChange = (e) => {
     setSort(e.target.value);
     let newContacts;
-    if (e.target.value === 'A-Z') {
+    if (e.target.value === "A-Z") {
       newContacts = contacts.sort((a, b) => {
         if (a.firstName < b.firstName) {
           return -1;
@@ -83,7 +83,7 @@ const Contacts = () => {
         }
         return 0;
       });
-    } else if (e.target.value === 'Z-A') {
+    } else if (e.target.value === "Z-A") {
       newContacts = contacts.sort((a, b) => {
         if (a.firstName < b.firstName) {
           return 1;
@@ -117,23 +117,21 @@ const Contacts = () => {
             id="filter"
             className="form-select"
             style={{
-              width: 'auto',
+              width: "auto",
             }}
             value={filter}
             onChange={handleFilterChange}
           >
             <option value="All">All</option>
-            <option value="Friends">Friends</option>
-            <option value="Family">Family</option>
-            <option value="Relatives">Relatives</option>
-            <option value="Other">Other</option>
+            <option value="N32">N32</option>
+            <option value="M33">M33</option>
           </select>
           <select
             name="sort"
             id="sort"
             className="form-select"
             style={{
-              width: 'auto',
+              width: "auto",
             }}
             value={sort}
             onChange={handleSortChange}
@@ -147,13 +145,13 @@ const Contacts = () => {
           <div>
             <button
               onClick={() => setShowFavorite(false)}
-              className={`btn ${showFavorite ? '' : 'btn-primary'} w-50`}
+              className={`btn ${showFavorite ? "" : "btn-primary"} w-50`}
             >
               All({contacts.length})
             </button>
             <button
               onClick={() => setShowFavorite(true)}
-              className={`btn ${showFavorite ? 'btn-primary' : ''} w-50`}
+              className={`btn ${showFavorite ? "btn-primary" : ""} w-50`}
             >
               Favorite({contacts.filter((cn) => cn.favorite).length})
             </button>
